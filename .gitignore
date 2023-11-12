@@ -2,3 +2,4 @@ venv
 *.db
 .idea/
 *.sqlite3
+__pycache__
