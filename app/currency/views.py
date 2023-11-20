@@ -1,27 +1,29 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
 from app.currency.models import Rate, ContactUs
 
 
 def rate_list(request):
-    results = []
     rates = Rate.objects.all()
+    context = {
+        'rates': rates
+    }
 
-    for rate in rates:
-        results.append(
-            f'ID: {rate.id}, buy: {rate.buy}, sell: {rate.sell}, type:{rate.type},'
-            f' source: {rate.source}, created: {rate.created} <br>'
-        )
-
-    return HttpResponse(str(results))
+    return render(request, 'rate_list.html', context)
 
 
 def message(request):
-    results = []
     infos = ContactUs.objects.all()
+    context = {
+        'infos': infos
+    }
 
-    for info in infos:
-        results.append(
-            f'ID: {info.id}, email: {info.email}, subject: {info.subject}, message:{info.message} <br>'
-        )
+    return render(request, 'message.html', context)
 
-    return HttpResponse(str(results))
+
+def tets_templates(request):
+    name = request.GET.get('name')
+    context = {
+        'username': name
+    }
+
+    return render(request, 'test.html', context)

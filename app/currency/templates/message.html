@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    message
+{% endblock title %}
+
+{% block content %}
+
+{% for info in infos %}
+        Email: {{ info.email }}
+        Subject: {{ info.subject }}
+        Message: {{ info.message }}<br>
+
+{% endfor %}
+
+{% endblock content %}
+
