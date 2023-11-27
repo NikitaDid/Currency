@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    message
+{% endblock title %}
+
+{% block content %}
+
+    {% for info in infos %}
+        <table>
+            <tr>
+                <td>Email: {{ info.email }}</td>
+                <td>Subject: {{ info.subject }}</td>
+                <td>Message: {{ info.message }}</td><br>
+        </table>
+
+
+
+
+    {% endfor %}
+
+{% endblock content %}
+
