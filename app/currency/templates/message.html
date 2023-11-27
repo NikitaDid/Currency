@@ -6,12 +6,18 @@
 
 {% block content %}
 
-{% for info in infos %}
-        Email: {{ info.email }}
-        Subject: {{ info.subject }}
-        Message: {{ info.message }}<br>
+    {% for info in infos %}
+        <table>
+            <tr>
+                <td>Email: {{ info.email }}</td>
+                <td>Subject: {{ info.subject }}</td>
+                <td>Message: {{ info.message }}</td><br>
+        </table>
 
-{% endfor %}
+
+
+
+    {% endfor %}
 
 {% endblock content %}
 

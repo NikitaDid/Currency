@@ -7,12 +7,16 @@
 {% block content %}
 
     {% for rate in rates %}
-        Id: {{ rate.id }}
-        Buy: {{ rate.buy }}
-        Sell: {{ rate.sell }}
-        Created: {{ rate.created }}
-        Type: {{ rate.type }}
-        Source: {{ rate.source }}<br>
+        <table>
+
+            <tr>
+                <td>Id: {{ rate.id }}</td>
+                <td>Buy: {{ rate.buy }}</td>
+                <td>Sell: {{ rate.sell }}</td>
+                <td>Created: {{ rate.created }}</td>
+                <td>Type: {{ rate.type }}</td>
+                <td>Source: {{ rate.source }}</td><br>
+        </table>
     {% endfor %}
 
 {% endblock content %}
