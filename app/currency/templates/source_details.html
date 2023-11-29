@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    source_list
+{% endblock title %}
+
+{% block content %}
+
+    <a href="/source/create">Source</a><br>
+
+
+    <table>
+
+        <tr>
+
+            <td>Id: {{ bank.id }}
+            Source_url: {{ bank.source_url }}
+            Bank name: {{ bank.source_name }}
+            </td>
+
+    </table>
+
+
+{% endblock content %}

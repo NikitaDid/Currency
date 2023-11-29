@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    rate_list
+{% endblock title %}
+
+{% block content %}
+
+    <a href="/rate/create">Create</a><br>
+
+
+    <table>
+
+        <tr>
+
+            <td>Id: {{ rate.id }}</td>
+            <td>Buy: {{ rate.buy }}</td>
+            <td>Sell: {{ rate.sell }}</td>
+            <td>Created: {{ rate.created }}</td>
+            <td>Type: {{ rate.type }}</td>
+            <td>Source: {{ rate.source }}</td>
+
+    </table>
+
+
+{% endblock content %}

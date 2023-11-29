@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Message{% endblock %}
+
+{% block content %}
+    Are you sure you want to delete message with id {{ info.id }}?
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Yes, delete</button>
+    </form>
+
+{% endblock %}
