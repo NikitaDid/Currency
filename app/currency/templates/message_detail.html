@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    message_list
+{% endblock title %}
+
+{% block content %}
+
+    <a href="/contactus/list">Message</a>
+
+
+    <table>
+
+        <tr>
+
+            <td>
+                Id: {{ info.id }}
+                Email: {{ info.email }}
+                Subject: {{ info.subject }}
+                Message: {{ info.message }}
+            </td>
+
+    </table>
+
+
+{% endblock content %}
