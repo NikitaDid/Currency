@@ -6,16 +6,16 @@
 
 {% block content %}
 
-    <a href="/source/create">Source</a><br>
+    <a href="{% url 'source-create' %}">Source</a><br>
 
 
     <table>
 
         <tr>
 
-            <td>Id: {{ bank.id }}
-            Source_url: {{ bank.source_url }}
-            Bank name: {{ bank.source_name }}
+            <td>Id: {{ source.id }}
+            Source_url: {{ source.source_url }}
+            Bank name: {{ source.source_name }}
             </td>
 
     </table>

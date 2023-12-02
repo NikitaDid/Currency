@@ -6,19 +6,19 @@
 
 {% block content %}
 
-    <a href="/message/create">Message</a>
+    <a href="{%  url 'message-create' %}">Message</a>
 
-    {% for info in infos %}
+    {% for contactus in object_list %}
         <table>
             <tr>
                 <td>
-                    <a href="/message/detail/{{ info.id }}/">Details Info</a>
-                    Id: {{ info.id }}
-                    Email: {{ info.email }}
-                    Subject: {{ info.subject }}
-                    Message: {{ info.message }}
-                    <a href="/message/update/{{ info.id }}/">Edit</a>
-                    <a href="/message/delete/{{ info.id }}/">Delete</a></td>
+                    <a href="{% url 'message-details' contactus.id %}">Details Info</a>
+                    Id: {{ contactus.id }}
+                    Email: {{ contactus.email }}
+                    Subject: {{ contactus.subject }}
+                    Message: {{ contactus.message }}
+                    <a href="{% url 'message-update' contactus.id %}">Edit</a>
+                    <a href="{% url 'message-delete' contactus.id %}">Delete</a></td>
         </table>
 
 

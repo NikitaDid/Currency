@@ -6,21 +6,21 @@
 
 {% block content %}
 
-    <a href="/rate/create">Create</a>
+    <a href="{% url 'rate-create' %}">Create</a>
 
-    {% for rate in rates %}
+    {% for rate in object_list %}
         <table>
 
             <tr>
-                <td><a href="/rate/details/{{ rate.id }}">Details</a></td>
+                <td><a href="{% url 'rate-details' rate.id %}">Details</a></td>
                 <td>Id: {{ rate.id }}</td>
                 <td>Buy: {{ rate.buy }}</td>
                 <td>Sell: {{ rate.sell }}</td>
                 <td>Created: {{ rate.created }}</td>
                 <td>Type: {{ rate.change_type }}</td>
                 <td>Source: {{ rate.source }}</td>
-                <td><a href="/rate/update/{{ rate.id }}">Edit</a></td>
-                <td><a href="/rate/delete/{{ rate.id }}">Delete</a></td>
+                <td><a href="{% url 'rate-update' rate.id %}">Edit</a></td>
+                <td><a href="{% url 'rate-delete' rate.id %}">Delete</a></td>
 
         </table>
     {% endfor %}
