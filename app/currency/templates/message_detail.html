@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <a href="/contactus/list">Message</a>
+    <a href="{% url 'message-create' %}">Message</a>
 
 
     <table>
@@ -14,10 +14,10 @@
         <tr>
 
             <td>
-                Id: {{ info.id }}
-                Email: {{ info.email }}
-                Subject: {{ info.subject }}
-                Message: {{ info.message }}
+                Id: {{ contactus.id }}
+                Email: {{ contactus.email }}
+                Subject: {{ contactus.subject }}
+                Message: {{ contactus.message }}
             </td>
 
     </table>
