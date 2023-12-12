@@ -28,9 +28,10 @@ class Rate(models.Model):
 
 
 class ContactUs(models.Model):
-    email = models.EmailField(_('Email'), max_length=254)
-    subject = models.TextField(verbose_name='subject')
-    message = models.TextField(verbose_name='message')
+    name = models.CharField(_('Name'), max_length=64, default='nikita')
+    email = models.EmailField(_('Email'), max_length=254, default='nikitaaa@gmail.com')
+    subject = models.CharField(_('Subject'), max_length=254)
+    message = models.CharField(_('Message'), max_length=254)
 
     class Meta:
         verbose_name = _('Message')
@@ -56,3 +57,15 @@ class Source(models.Model):
         verbose_name = _('Source')
         verbose_name_plural = _('Sources')
 
+class  RequestResponseLog(models.Model):
+    path = models.CharField(
+        _('Path'),
+        max_length=256,
+    )
+    request_method = models.CharField(
+        _('Request_method'),
+        max_length=256,
+    )
+    time = models.FloatField(
+        _('Time'),
+    )

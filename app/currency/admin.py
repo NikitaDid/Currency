@@ -41,6 +41,7 @@ class RateAdmin(admin.ModelAdmin):
 class ContactUsAdmin(admin.ModelAdmin):
     list_display = (
         'id',
+        'name',
         'email',
         'subject',
         'message',
@@ -49,6 +50,7 @@ class ContactUsAdmin(admin.ModelAdmin):
         'email',
     )
     search_fields = (
+        'name',
         'email',
         'subject',
         'message',
