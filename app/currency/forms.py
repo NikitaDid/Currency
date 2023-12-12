@@ -18,6 +18,7 @@ class MessageForms(forms.ModelForm):
     class Meta:
         model = ContactUs
         fields = (
+            'name',
             'email',
             'subject',
             'message',

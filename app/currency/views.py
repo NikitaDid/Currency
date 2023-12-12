@@ -4,6 +4,8 @@ from app.currency.forms import RateForm, MessageForms, SourceForm
 from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView, TemplateView
 from django.urls import reverse, reverse_lazy
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 class RateListView(ListView):
@@ -48,6 +50,28 @@ class MessageCreateView(CreateView):
     form_class = MessageForms
     success_url = reverse_lazy('message-list')
     template_name = 'message_create.html'
+
+    def _send_email(self):
+        recipient = settings.DEFAULT_FROM_EMAIL,
+        subject = 'User contact us',
+        message = f"""
+                    Name: {self.object.name}
+                    Email: {self.object.email}
+                    Subject: {self.object.subject}
+                    Message: {self.object.message}
+        """
+        send_mail(
+            subject,
+            message,
+            recipient,
+            [recipient],
+            fail_silently=False,
+        )
+
+    def form_valid(self, form):
+        redirect = super().form_valid(form)
+        self._send_email()
+        return redirect
 
 
 class MessageUpdateView(UpdateView):
@@ -100,7 +124,6 @@ class SourceDetailView(DetailView):
 
 
 # --------------------------------------------------------
-
 
 
 class IndexView(TemplateView):
