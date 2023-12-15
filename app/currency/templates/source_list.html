@@ -6,19 +6,31 @@
 
 {% block content %}
 
-    <a href="{% url 'source-create' %}">Source</a>
+
+    {% if request.user.is_authenticated %}
+
+        <a href="{% url 'source-create' %}">Source</a>
+
+    {% endif %}
 
     {% for source in object_list %}
         <table>
 
             <tr>
-                <td><a href="{% url 'source-details' source.id %}">Details</a>
-                Id: {{ source.id }}
-                Source_url: {{ source.source_url }}
-                Bank name: {{ source.source_name }}
-                <a href="{% url 'source-update' source.id %}">Edit</a>
-                <a href="{% url 'source-delete' source.id %}">Delete</a></td>
+                <td>
+                    Id: {{ source.id }}
+                    Source_url: {{ source.source_url }}
+                    Bank name: {{ source.source_name }}
 
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'source-update' source.id %}">Edit</a>
+                        <a href="{% url 'source-delete' source.id %}">Delete</a>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'source-details' source.id %}">Details</a>
+                    {% endif %}
+
+                </td>
         </table>
     {% endfor %}
 

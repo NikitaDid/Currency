@@ -1,16 +1,29 @@
 from django.shortcuts import render
+
 from app.currency.models import Rate, ContactUs, Source
 from app.currency.forms import RateForm, MessageForms, SourceForm
+
 from django.http.response import HttpResponseRedirect
+from django.http import HttpResponseForbidden
+
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView, TemplateView
+
 from django.urls import reverse, reverse_lazy
+
 from django.core.mail import send_mail
+from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 from django.conf import settings
 
 
-class RateListView(ListView):
+class RateListView(LoginRequiredMixin, ListView):
     queryset = Rate.objects.all()
     template_name = 'rate_list.html'
+
+    def get_object(self, queryset=None):
+        qs = self.get_queryset()
+        return qs.get(id=self.request.user.id)
 
 
 class RateCreateView(CreateView):
@@ -20,17 +33,29 @@ class RateCreateView(CreateView):
     template_name = 'rate_create.html'
 
 
-class RateUpdateView(UpdateView):
+class RateUpdateView(UserPassesTestMixin, UpdateView):
     model = Rate
     form_class = RateForm
     success_url = reverse_lazy('rate_list')
     template_name = 'rate_update.html'
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-class RateDeleteView(DeleteView):
+    def hanlde_no_permission(self):
+        return HttpResponseForbidden('You can`t change rate')
+
+
+class RateDeleteView(UserPassesTestMixin, DeleteView):
     model = Rate
     success_url = reverse_lazy('rate_list')
     template_name = 'rate_delete.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def hanlde_no_permission(self):
+        return HttpResponseForbidden('You can`t delete rate')
 
 
 class RateDetailView(DetailView):
@@ -137,3 +162,20 @@ def tets_templates(request):
     }
 
     return render(request, 'test.html', context)
+
+
+# --------------------------------------------------------
+
+
+class ProfileView(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    template_name = 'registration/profile.html'
+    success_url = reverse_lazy('Index')
+    fields = (
+        'first_name',
+        'last_name',
+    )
+
+    def get_object(self, queryset=None):
+        qs = self.get_queryset()
+        return qs.get(id=self.request.user.id)
