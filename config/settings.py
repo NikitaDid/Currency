@@ -30,7 +30,8 @@ EXTERNAL_APPS = [
 ]
 
 INTERNAL_APPS = [
-    'app.currency'
+    'app.currency',
+    'account',
 ]
 # Application definition
 
@@ -97,6 +98,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.User'
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -124,3 +127,6 @@ DEFAULT_FROM_EMAIL = 'mamusiastl@gmail.com'
 LOGIN_REDIRECT_URL = reverse_lazy('Index')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_REDIRECT_URL = reverse_lazy('Index')
+
+HTTP_METHOD = 'http'
+DOMAIN = '0.0.0.0:8000'

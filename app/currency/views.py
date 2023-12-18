@@ -166,16 +166,16 @@ def tets_templates(request):
 
 # --------------------------------------------------------
 
-
-class ProfileView(LoginRequiredMixin, UpdateView):
-    model = get_user_model()
-    template_name = 'registration/profile.html'
-    success_url = reverse_lazy('Index')
-    fields = (
-        'first_name',
-        'last_name',
-    )
-
-    def get_object(self, queryset=None):
-        qs = self.get_queryset()
-        return qs.get(id=self.request.user.id)
+#
+# class ProfileView(LoginRequiredMixin, UpdateView):
+#     model = get_user_model()
+#     template_name = 'registration/profile.html'
+#     success_url = reverse_lazy('Index')
+#     fields = (
+#         'first_name',
+#         'last_name',
+#     )
+#
+#     def get_object(self, queryset=None):
+#         qs = self.get_queryset()
+#         return qs.get(id=self.request.user.id)

@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
-from app.currency.views import tets_templates, IndexView, ProfileView
+from app.currency.views import tets_templates, IndexView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('auth/', include('django.contrib.auth.urls')),
-    path('auth/profile/', ProfileView.as_view(), name='profile'),
+    path('auth/profile/', include('account.urls')),
 
 
     path('', include('app.currency.urls')),
