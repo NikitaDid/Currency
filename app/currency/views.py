@@ -18,7 +18,7 @@ from django.conf import settings
 
 
 class RateListView(LoginRequiredMixin, ListView):
-    queryset = Rate.objects.all()
+    queryset = Rate.objects.all().select_related('source')
     template_name = 'rate_list.html'
 
     def get_object(self, queryset=None):

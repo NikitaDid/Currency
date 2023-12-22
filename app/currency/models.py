@@ -33,6 +33,8 @@ class ContactUs(models.Model):
     subject = models.CharField(_('Subject'), max_length=254)
     message = models.CharField(_('Message'), max_length=254)
 
+    source = models.ForeignKey('currency.Source', on_delete=models.CASCADE, related_name='rates')
+
     class Meta:
         verbose_name = _('Message')
         verbose_name_plural = _('Messages')
@@ -57,7 +59,8 @@ class Source(models.Model):
         verbose_name = _('Source')
         verbose_name_plural = _('Sources')
 
-class  RequestResponseLog(models.Model):
+
+class RequestResponseLog(models.Model):
     path = models.CharField(
         _('Path'),
         max_length=256,
