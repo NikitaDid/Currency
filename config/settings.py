@@ -32,8 +32,12 @@ EXTERNAL_APPS = [
 INTERNAL_APPS = [
     'app.currency',
     'account',
+    'bootstrap4',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 # Application definition
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + INTERNAL_APPS
 
@@ -115,6 +119,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRSI = [
+    BASE_DIR / 'static/',
+]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

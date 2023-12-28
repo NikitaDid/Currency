@@ -166,6 +166,9 @@ def tets_templates(request):
 
 # --------------------------------------------------------
 
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+
 #
 # class ProfileView(LoginRequiredMixin, UpdateView):
 #     model = get_user_model()

@@ -27,7 +27,7 @@ urlpatterns = [
     path('rate/delete/<int:pk>/', RateDeleteView.as_view(), name='rate-delete'),
     path('rate/details/<int:pk>/',RateDetailView.as_view(), name='rate-details'),
 
-    path('contactus/list', MessageListView.as_view(), name='message-list'),
+    path('message/list', MessageListView.as_view(), name='message-list'),
     path('message/create', MessageCreateView.as_view(), name='message-create'),
     path('message/update/<int:pk>/', MessageUpdateView.as_view(), name='message-update'),
     path('message/delete/<int:pk>/', MessageDeleteView.as_view(), name='message-delete'),

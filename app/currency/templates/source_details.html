@@ -4,21 +4,24 @@
     source_list
 {% endblock title %}
 
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    source_list
+{% endblock title %}
+
 {% block content %}
 
-    <a href="{% url 'source-create' %}">Source</a><br>
-
+    <a href="{% url 'source-create' %}">Source</a>
 
     <table>
-
         <tr>
+            <td style="background-color: greenyellow"><h3>Id: {{ source.id }}</h3></td>
+            <td style="background-color: green"><h3>Source_url: {{ source.source_url }}</h3></td>
+            <td style="background-color: red"><h3>Bank name: {{ source.source_name }}</h3></td>
 
-            <td>Id: {{ source.id }}
-            Source_url: {{ source.source_url }}
-            Bank name: {{ source.source_name }}
-            </td>
+            <td><img style="height: 50px; width: 50px" src="{% static 'Privat.png' %}" alt="logo"></td>
 
     </table>
-
 
 {% endblock content %}
