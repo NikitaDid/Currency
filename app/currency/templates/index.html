@@ -1,15 +1,30 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     Index
-{% endblock %}
+{% endblock title %}
+
+<style>
+    .centered-image {
+        text-align: center;
+    }
+
+    .centered-image img {
+        display: inline-block;
+    }
+</style>
+
 
 {% block content %}
 
-    <table>
+    <table class="table table-striped" style="width: 100%; height: 100vh; text-align: center;">
         <tr>
-            <td> Welcome to currency APP!</td>
-        </tr>
+
+            <td><img style="height: 550px; width: 800px" src="{% static 'asd.jpg' %}" alt="logo"></td>
+
+
     </table>
 
-{% endblock %}
+
+{% endblock content %}

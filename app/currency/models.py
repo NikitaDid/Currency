@@ -6,6 +6,7 @@ from app.currency.choices import (
     SOURCE_URL_TYPE,
     CURRENCY_PRIVAT,
 )
+from django.contrib.auth.models import AbstractUser
 
 
 class Rate(models.Model):
@@ -54,6 +55,14 @@ class Source(models.Model):
         default=CURRENCY_PRIVAT,
     )
     created = models.DateTimeField(_('Created'), auto_now_add=True)
+
+    logo = models.FileField(
+        _('Logo'),
+        default=None,
+        null=True,
+        blank=True,
+        upload_to='static/'
+    )
 
     class Meta:
         verbose_name = _('Source')
